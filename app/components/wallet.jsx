@@ -1013,8 +1013,8 @@ export default class ZWallet extends React.Component {
         showSettings: false,
         showWalletGen: false,
         compressPubKey: true,
-        insightAPI: 'http://localhost:3001/insight-api-zcash/',
-        explorerURL: 'http://localhost:3001/',
+        insightAPI: 'https://explorer.asofe.org/insight-api-zcash/',
+        explorerURL: 'https://explorer.asofe.org/',
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
@@ -1147,12 +1147,12 @@ export default class ZWallet extends React.Component {
     _settings.useTestNet = !_settings.useTestNet
 
     if (_settings.useTestNet){
-        _settings.insightAPI = 'http://explorer.testnet.asofe.org/insight-api-zcash/'
-      _settings.explorerURL = 'http://explorer.testnet.asofe.org/'
+        _settings.insightAPI = 'https://explorer.testnet.asofe.org/insight-api-zcash/'
+      _settings.explorerURL = 'https://explorer.testnet.asofe.org/'
     }
     else{
-        _settings.insightAPI = 'http://localhost:3001/insight-api-zcash/'
-        _settings.explorerURL = 'http://localhost:3001/'
+        _settings.insightAPI = 'https://explorer.asofe.org/insight-api-zcash/'
+        _settings.explorerURL = 'https://explorer.asofe.org/'
     }
 
     this.setState({
