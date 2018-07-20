@@ -30,21 +30,21 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            favicon: 'assets/images/favicon.ico',
+            favicon: 'assets/images/favicon.png',
             template: './app/index.html',
             chunks: ['index'],
             filename: 'index.html',
             inject: 'body'
         }),
         new HtmlWebpackPlugin({
-            favicon: 'assets/images/favicon.ico',
+            favicon: 'assets/images/favicon.png',
             template: './app/index.html',
             chunks: ['faq'],
             filename: 'faq.html',
             inject: 'body'
         }),
         new HtmlWebpackPlugin({
-            favicon: 'assets/images/favicon.ico',
+            favicon: 'assets/images/favicon.png',
             template: './app/index.html',
             chunks: ['guide'],
             filename: 'guide.html',

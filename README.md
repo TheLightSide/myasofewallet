@@ -1,16 +1,14 @@
-# myhushwallet
+# myasofewallet
 
-MyHushWallet is a client-side browser-based wallet for Hush.
+MyAsofehWallet is a client-side browser-based wallet for Asofe.
 
 This project is a port of MyZenWallet https://github.com/ZencashOfficial/myzenwallet which was inspired by MyEtherWallet.
 
-Officially at: https://wallet.myhush.org
+Officially at: https://wallet.asofe.org
 
-
-Unofficial verison can be found on https://myhushwallet.tsdb.eu - development/playing purposes
 
 # Running locally
-Download dist folder containing: index.html, faq.html, guide.html, favicon.ico, Javascript folder (js) and double click `index.html`
+Download dist folder containing: index.html, faq.html, guide.html, favicon.png, Javascript folder (js) and double click `index.html`
 
 
 # Dev

@@ -218,13 +218,13 @@ class ZWalletUnlockKey extends React.Component {
                   style={{display: 'none'}}
                   type="file"                 
                   name="file"
-                  id="walletDatFile"                
+                  id="walletDatFile"
                   onChange={this.loadWalletDat}
                 />
               </Label>
               <FormText color="muted">
-                For Windows, it should be in %APPDATA%/Roaming/Hush<br/>
-                For Mac/Linux, it should be in ~/.Hush
+                For Windows, it should be in %APPDATA%/Roaming/Asofe<br/>
+                For Mac/Linux, it should be in ~/.Asofe
               </FormText>
             </Col>
           </FormGroup>
@@ -286,7 +286,7 @@ class ZWalletSettings extends React.Component {
   render () {
     return (
       <Modal isOpen={this.props.settings.showSettings} toggle={this.props.toggleModalSettings}>
-        <ModalHeader toggle={this.props.toggleShowSettings}>Hush Wallet Settings</ModalHeader>                  
+        <ModalHeader toggle={this.props.toggleShowSettings}>Asofe Wallet Settings</ModalHeader>
         <ModalBody>
           <ZWalletSelectUnlockType
               setUnlockType={this.props.setUnlockType}
@@ -575,8 +575,8 @@ class ZSendHUSH extends React.Component {
 
     // Convert how much we wanna send
     // to satoshis
-    const satoshisToSend = Math.round(value * 100000000)
-    const satoshisfeesToSend = Math.round(fee * 100000000)        
+    const satoshisToSend = Math.round(value * 100)
+    const satoshisfeesToSend = Math.round(fee * 100)
     
     // Reset hush send progress and error message
     this.setProgressValue(1)
@@ -713,7 +713,7 @@ class ZSendHUSH extends React.Component {
       var hushtx = hushwalletutils.urlAppend(this.props.settings.explorerURL, 'tx/') + this.state.sentTxid
       hushTxLink = (
         <Alert color="success">
-        <strong>HUSH successfully sent!</strong> <a href={hushtx}>Click here to view your transaction</a>
+        <strong>Asofe successfully sent!</strong> <a href={hushtx}>Click here to view your transaction</a>
         </Alert>
       )      
     }
@@ -749,7 +749,7 @@ class ZSendHUSH extends React.Component {
         <Col>
           <Card>
             <CardBlock>       
-              <Alert color="danger">ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF HUSH FIRST</Alert>              
+              <Alert color="danger">ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF ASOFE FIRST</Alert>
               <InputGroup>
                 <InputGroupAddon>From Address</InputGroupAddon>
                 <Input type="select" onChange={this.handleUpdateSelectedAddress}>
@@ -767,13 +767,13 @@ class ZSendHUSH extends React.Component {
               </InputGroup>
               <InputGroup>
                 <InputGroupAddon>Fee</InputGroupAddon>
-                <Input onChange={this.handleUpdateFee} placeholder="e.g 0.001" />
+                <Input onChange={this.handleUpdateFee} placeholder="e.g 0.01" />
               </InputGroup>
               <br/>
               <FormGroup check>
                 <Label check>
                   <Input onChange={this.handleCheckChanged} type="checkbox" />{' '}
-                  Yes, I would like to send these HUSH
+                  Yes, I would like to send these ASOFE
                 </Label>
               </FormGroup> 
               <br/>                           
@@ -911,7 +911,7 @@ class ZWalletTabs extends React.Component {
     var now = new Date();
     now = now.toISOString().split('.')[0]+'Z';
 
-    var fileStr = '# Wallet dump created by myhushwallet ' + pjson.version + '\n'
+    var fileStr = '# Wallet dump created by myasofewallet ' + pjson.version + '\n'
     fileStr += '# Created on ' + now + '\n\n\n'
 
     Object.keys(this.props.publicAddresses).forEach(function(key) {
@@ -921,7 +921,7 @@ class ZWalletTabs extends React.Component {
     }.bind(this))
     
     const pkBlob = new Blob([fileStr], {type: 'text/plain;charset=utf-8'})
-    FileSaver.saveAs(pkBlob, now + '_myhushwallet_private_keys.txt')
+    FileSaver.saveAs(pkBlob, now + '_myasofewallet_private_keys.txt')
   }
 
   render () {
@@ -941,7 +941,7 @@ class ZWalletTabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggleTabs('2'); }}
             >
-              Send HUSH
+              Send ASOFE
             </NavLink>
           </NavItem>
           <NavItem>
@@ -1013,8 +1013,8 @@ export default class ZWallet extends React.Component {
         showSettings: false,
         showWalletGen: false,
         compressPubKey: true,
-        insightAPI: 'https://explorer.myhush.org/api',
-        explorerURL: 'https://explorer.myhush.org/',
+        insightAPI: 'http://localhost:3001/insight-api-zcash/',
+        explorerURL: 'http://localhost:3001/',
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
@@ -1147,12 +1147,12 @@ export default class ZWallet extends React.Component {
     _settings.useTestNet = !_settings.useTestNet
 
     if (_settings.useTestNet){
-        _settings.insightAPI = 'https://explorer.testnet.myhush.org/api'
-      _settings.explorerURL = 'https://explorer.testnet.myhush.org/'
+        _settings.insightAPI = 'http://explorer.testnet.asofe.org/insight-api-zcash/'
+      _settings.explorerURL = 'http://explorer.testnet.asofe.org/'
     }
     else{
-        _settings.insightAPI = 'https://explorer.myhush.org/api'
-        _settings.explorerURL = 'https://explorer.myhush.org/'
+        _settings.insightAPI = 'http://localhost:3001/insight-api-zcash/'
+        _settings.explorerURL = 'http://localhost:3001/'
     }
 
     this.setState({
@@ -1183,7 +1183,7 @@ export default class ZWallet extends React.Component {
       <Container>
         <Row>
           <Col>
-            <h1 className='display-6'>Hush Wallet&nbsp;
+            <h1 className='display-6'>Asofe Wallet&nbsp;
               <ToolTipButton onClick={this.toggleShowSettings} id={1} buttonText={<MDSettings/>} tooltipText={'settings'}/>&nbsp;
               <ToolTipButton disabled={this.state.publicAddresses === null} onClick={this.resetKeys} id={2} buttonText={<FARepeat/>} tooltipText={'reset wallet'}/>
             </h1>
